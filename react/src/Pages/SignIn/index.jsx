@@ -1,5 +1,6 @@
+import Layout from "../../Componentes/Layout";
 function SignIn() {
-    return <div className="bg-red-100">Hola Mundo</div>;
-  }
-  
-  export default SignIn;
+  return <Layout>SignIn</Layout>;
+}
+
+export default SignIn;
