@@ -3,3 +3,16 @@
     height: calc(100vh - 68px);
     top: 68px;
 }
+
+.scrollable-cards {
+    overflow: scroll;
+}
+
+
+.scrollable-cards {
+    
+    scrollbar-color: #FCE4EC #ffffff;
+    border-radius: 5px;
+    
+}
+
