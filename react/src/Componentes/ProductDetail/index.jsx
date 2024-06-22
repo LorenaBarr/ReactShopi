@@ -6,10 +6,6 @@ import "./styles.css";
 const ProductDetail = () => {
   const context = useContext(ShoppingCartContext);
 
-  if (!context.productToShow || !context.productToShow.images) {
-    return null;
-  }
-
   return (
     <aside
       className={`${
@@ -22,13 +18,13 @@ const ProductDetail = () => {
           <XMarkIcon
             className="h-6 w-6 text-black cursor-pointer"
             onClick={() => context.closeProductDetail()}
-          />
+          ></XMarkIcon>
         </div>
       </div>
       <figure className="px-6">
         <img
           className="w-full h-full rounded-lg"
-          src={context.productToShow.images[0]}
+          src={context.productToShow.images}
           alt={context.productToShow.title}
         />
       </figure>
@@ -37,14 +33,15 @@ const ProductDetail = () => {
           ${context.productToShow.price}
         </span>
         <span className="font-medium text-md">
-          {context.productToShow.title}
+          ${context.productToShow.title}
         </span>
         <span className="font-light text-sm">
-          {context.productToShow.description}
+          ${context.productToShow.description}
         </span>
       </p>
     </aside>
   );
 };
+export default ProductDetail
 
-export default ProductDetail;
+

@@ -25,7 +25,7 @@ const Card = (data) => {
 
     if (isInCart) {
       return (
-        <div className="absolute top-0 right-0 flex justify-center items-center bg-pink-200 w-6 h-6 rounded-full m-2 p-1">
+        <div className="absolute top-0 right-0 flex justify-center items-center bg-black w-6 h-6 rounded-full m-2 p-1">
           <CheckIcon className="h-6 w-6 text-white"></CheckIcon>
         </div>
       );
@@ -64,6 +64,7 @@ const Card = (data) => {
     </div>
   );
 };
+
 Card.propTypes = {
   data: PropTypes.shape({
     category: PropTypes.shape({
