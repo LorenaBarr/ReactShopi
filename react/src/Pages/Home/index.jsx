@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import Layout from "../../Componentes/Layout";
 import Card from "../../Componentes/Card";
+import ProductDetail from "../../Componentes/ProductDetail";
 
 function Home() {
   const [items, setItems] = useState(null);
@@ -8,18 +9,18 @@ function Home() {
   useEffect(() => {
     fetch("https://api.escuelajs.co/api/v1/products")
       .then((response) => response.json())
-      .then((data) => setItems(data))
-      .catch((error) => console.error("Error fetching data:", error));
+      .then((data) => setItems(data));
   }, []);
 
   return (
     <Layout>
       Home
-      <div className="grid grid-cols-4 gap-4 w-full max-w-screen-lg">
+      <div className="grid gap-4 grid-cols-4 w-full max-w-screen-lg">
         {items?.map((item) => (
           <Card key={item.id} data={item} />
         ))}
       </div>
+      <ProductDetail />
     </Layout>
   );
 }
