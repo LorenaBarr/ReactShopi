@@ -1,6 +1,7 @@
 import { createContext, useState, useEffect } from "react";
 import PropTypes from "prop-types";
 
+
 export const ShoppingCartContext = createContext();
 
 export const ShoppingCartProvider = ({ children }) => {
@@ -27,11 +28,14 @@ export const ShoppingCartProvider = ({ children }) => {
   const [order, setOrder] = useState([]);
 
   // Get products
-  const [items, setItems] = useState(null);
-  const [filteredItems, setFilteredItems] = useState(null);
+  const [items, setItems] = useState([]);
+  const [filteredItems, setFilteredItems] = useState([]);
 
   // Get products by title
-  const [searchByTitle, setSearchByTitle] = useState(null);
+  const [searchByTitle, setSearchByTitle] = useState("");
+
+  // Get products by category
+  const [searchByCategory, setSearchByCategory] = useState("");
 
   useEffect(() => {
     fetch("https://api.escuelajs.co/api/v1/products")
@@ -40,15 +44,35 @@ export const ShoppingCartProvider = ({ children }) => {
   }, []);
 
   const filteredItemsByTitle = (items, searchByTitle) => {
-    return items?.filter((item) =>
+    return items.filter((item) =>
       item.title.toLowerCase().includes(searchByTitle.toLowerCase())
     );
   };
 
+  const filteredItemsByCategory = (items, searchByCategory) => {
+    return items.filter((item) =>
+      item.category.name.toLowerCase().includes(searchByCategory.toLowerCase())
+    );
+  };
+
+  const filterBy = (items, searchByTitle, searchByCategory) => {
+    let filteredItems = items;
+
+    if (searchByTitle) {
+      filteredItems = filteredItemsByTitle(filteredItems, searchByTitle);
+    }
+
+    if (searchByCategory) {
+      filteredItems = filteredItemsByCategory(filteredItems, searchByCategory);
+    }
+
+    return filteredItems;
+  };
+
   useEffect(() => {
-    if (searchByTitle)
-      setFilteredItems(filteredItemsByTitle(items, searchByTitle));
-  }, [items, searchByTitle]);
+    const filtered = filterBy(items, searchByTitle, searchByCategory);
+    setFilteredItems(filtered);
+  }, [items, searchByTitle, searchByCategory]);
 
   return (
     <ShoppingCartContext.Provider
@@ -72,6 +96,8 @@ export const ShoppingCartProvider = ({ children }) => {
         searchByTitle,
         setSearchByTitle,
         filteredItems,
+        searchByCategory,
+        setSearchByCategory,
       }}
     >
       {children}
@@ -82,5 +108,7 @@ export const ShoppingCartProvider = ({ children }) => {
 ShoppingCartProvider.propTypes = {
   children: PropTypes.node.isRequired,
 };
+
+
 
 export default ShoppingCartContext;
