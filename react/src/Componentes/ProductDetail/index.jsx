@@ -24,7 +24,7 @@ const ProductDetail = () => {
       <figure className="px-6">
         <img
           className="w-full h-full rounded-lg"
-          src={context.productToShow.images}
+          src={context.productToShow.image}
           alt={context.productToShow.title}
         />
       </figure>
@@ -33,15 +33,16 @@ const ProductDetail = () => {
           ${context.productToShow.price}
         </span>
         <span className="font-medium text-md">
-          ${context.productToShow.title}
+          {context.productToShow.title}
         </span>
         <span className="font-light text-sm">
-          ${context.productToShow.description}
+          {context.productToShow.description}
         </span>
       </p>
     </aside>
   );
 };
-export default ProductDetail
+
+export default ProductDetail;
 
 

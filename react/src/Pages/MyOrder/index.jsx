@@ -26,8 +26,9 @@ function MyOrder() {
             key={product.id}
             id={product.id}
             title={product.title}
-            imageUrl={product.images}
+            imageUrl={product.image}
             price={product.price}
+            handleDelete={(id) => context.handleDelete(id)}
           />
         ))}
       </div>

@@ -11,14 +11,14 @@ const CheckoutSideMenu = () => {
 
   const handleDelete = (id) => {
     const filteredProducts = context.cartProducts.filter(
-      (product) => product.id != id
+      (product) => product.id !== id
     );
     context.setCartProducts(filteredProducts);
   };
 
   const handleCheckout = () => {
     const orderToAdd = {
-      date: "01.02.23",
+      date: new Date().toLocaleDateString(),
       products: context.cartProducts,
       totalProducts: context.cartProducts.length,
       totalPrice: totalPrice(context.cartProducts),
@@ -50,7 +50,7 @@ const CheckoutSideMenu = () => {
             key={product.id}
             id={product.id}
             title={product.title}
-            imageUrl={product.images}
+            imageUrl={product.image}
             price={product.price}
             handleDelete={handleDelete}
           />

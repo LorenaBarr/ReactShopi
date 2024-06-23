@@ -21,15 +21,6 @@ const Navbar = () => {
         </li>
         <li>
           <NavLink
-            to="/clothes"
-            className={({ isActive }) => (isActive ? activeStyle : undefined)}
-            onClick={() => handleCategoryClick("clothes")}
-          >
-            Clothes
-          </NavLink>
-        </li>
-        <li>
-          <NavLink
             to="/electronics"
             className={({ isActive }) => (isActive ? activeStyle : undefined)}
             onClick={() => handleCategoryClick("electronics")}
@@ -39,29 +30,29 @@ const Navbar = () => {
         </li>
         <li>
           <NavLink
-            to="/furnitures"
+            to="/jewelery"
             className={({ isActive }) => (isActive ? activeStyle : undefined)}
-            onClick={() => handleCategoryClick("furnitures")}
+            onClick={() => handleCategoryClick("jewelery")}
           >
-            Furnitures
+            Jewelery
           </NavLink>
         </li>
         <li>
           <NavLink
-            to="/toys"
+            to="/men's clothing"
             className={({ isActive }) => (isActive ? activeStyle : undefined)}
-            onClick={() => handleCategoryClick("toys")}
+            onClick={() => handleCategoryClick("men's clothing")}
           >
-            Toys
+            Men's Clothing
           </NavLink>
         </li>
         <li>
           <NavLink
-            to="/others"
+            to="/women's clothing"
             className={({ isActive }) => (isActive ? activeStyle : undefined)}
-            onClick={() => handleCategoryClick("others")}
+            onClick={() => handleCategoryClick("women's clothing")}
           >
-            Others
+            Women's Clothing
           </NavLink>
         </li>
       </ul>
